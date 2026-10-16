@@ -1,0 +1,43 @@
+{
+  "number": 29,
+  "name": "Four Paths, One Stone",
+  "image_tool": "built-in imagegen transparent pigment mark, composited over inherited wall",
+  "prompt": "Four uneven earth-pigment trails converge toward one small stone; transparent background; prehistoric handmade appearance; no text, hands, people or frame.",
+  "wall_path": "artifacts/gathering/wall-v10.png",
+  "wall_format": "PNG",
+  "wall_dimensions": [
+    1254,
+    1254
+  ],
+  "wall_sha256": "8ac74c904a0712bace4e2ff642423dfb665c37df380b531e8a3fd1f58acbaa1a",
+  "preview_path": "dist/gathering/29.jpg",
+  "preview_format": "JPEG",
+  "preview_dimensions": [
+    512,
+    512
+  ],
+  "preview_sha256": "b67d81c8e29a20cba88b7a8dd37dab54da0f2bc3468c9d8ff11a38d00e02d696",
+  "preview_bytes": 87749,
+  "inherited_wall_sha256": "54c42fc4af0df4d9b46e713195c5e56931927b2d291977044282fc9db5bd3a60",
+  "visual_review": {
+    "pepe_visible": true,
+    "wide_mouth": true,
+    "heavy_lidded_eyes": true,
+    "inherited_digits_per_hand": [
+      5,
+      5
+    ],
+    "new_hands_or_handprints": 0,
+    "letters_or_numbers": false,
+    "new_frame_or_border": false,
+    "earth_pigments": true,
+    "cave_size_rock_cracks_light_framing_retained": true,
+    "earlier_marks_preserved": true
+  },
+  "visual_requirements_unmet": [],
+  "limitations": [
+    "The inherited rock looks photographic and is kept as supplied.",
+    "The new upper-right pigment is subdued at 512 px.",
+    "Worker visual inspection is not independent artistic approval."
+  ]
+}

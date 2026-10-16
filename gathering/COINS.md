@@ -1,9 +1,11 @@
 none
 
-Exact reward allocations already use real Ethereum ZTO
-(0xd782bdea4ef02a0bd391eb9089470c8080f0a68e); IMD is the available second choice.
-Minimums, caps, unsigned receipts and batch arithmetic require no new asset.
-Offline planning, bounded ZIP handling and static API comparison require none.
-No line's useful behavior depends on a new coin or a Uniswap v4 hook, so there
-is no launch request. No contract is proposed for Sepolia deployment this round.
-Nothing was signed, sent, paid, posted or deployed.
+Line 3's exact allocation and independent audit already use the real Ethereum
+ZTO contract (0xd782bdea4ef02a0bd391eb9089470c8080f0a68e) and its captured
+18-decimal metadata. No allocation tool needs a separate token. IMD remains the
+second available coin. Offline planning, bounded ZIP handling and static
+OpenAPI comparison require no coin, price, pool, fee or hook to work. A new
+coin would add no necessary capability, so no launch request is made.
+
+No contract is ready for a Sepolia deployment order. Nothing was signed,
+sent, paid, posted or deployed in this gathering.

@@ -2,6 +2,25 @@
 
 Compare OpenAPI descriptions inside untrusted ZIPs without extracting or executing any member. Python 3.9+ and the standard library only. No installation, line folders, network or accounts are needed.
 
+Gathering 29 adds line 4's OAuthCheck as an optional extension of the existing
+line 2 ZIP gate and line 4 comparison pipeline. Add `--oauth` to compare
+effective OAuth acquisition flows and endpoint references alongside the
+existing schema and transport checks:
+
+```sh
+python3 -B shared/api_bundle/api_bundle.py old.zip new.zip --old-sha256 OLD_APPROVED_SHA256 --new-sha256 NEW_APPROVED_SHA256 --oauth
+```
+
+Replace the digest labels with the actual reviewed ZIP digests. OAuth mode
+validates effective OAuth flows and refuses unusable declarations. Its finding
+is a potential integration break, not a live authorization test. Without
+`--oauth`, the previous SchemeCheck behavior and report remain available.
+The new vendored source is included in `SOURCES.json` and runs in this folder
+without access to any line folder. The local suite now has **49 tests**;
+its two new tests cover approved public-capture ZIPs with a hypothetical
+OAuth token endpoint change, CLI exit 1, no extraction, and malformed-flow
+refusal. No illustrative endpoint is contacted.
+
 Run from a workspace root:
 
 ```sh
@@ -35,7 +54,7 @@ Replace the uppercase argument labels with the real 64-character hex digests fro
 Paths must be in the current workspace with no symlink components, and the exact selected member must exist in both ZIPs. JSON goes to stdout. Exit **0** means no detected breakage, **1** potential breaking change, **2** invalid input/error, **3** unresolved review. Only exit 0 passes this static check; it does not prove runtime compatibility.
 
 The shared snapshot joins ZipGate and SafeZip (line 2) with ApiDelta, BoundCheck,
-MultipleCheck, ConstCheck, UniqueCheck, DependCheck, AuthCheck and SchemeCheck (line 4). `vendor/` contains ordinary
+MultipleCheck, ConstCheck, UniqueCheck, DependCheck, AuthCheck, SchemeCheck and optional OAuthCheck (line 4). `vendor/` contains ordinary
 source files; `SOURCES.json` records original/delivered hashes. SafeZip and
 ApiDelta are byte-identical snapshots. Extensions only adapt sibling module and
 demo capture paths to the shared layout. No line source was modified. Refresh
@@ -109,8 +128,9 @@ compare exactly. A surviving OR alternative with compatible obligations and
 transport can prevent a transport finding. Anonymous overrides remain public
 in this symbolic model. Invalid supported fields in effective schemes fail even
 when both documents are identical. No credential or actual authorization is
-examined. OAuth flow URLs, OpenID discovery, TLS trust and bearerFormat remain
-unresolved reviews; nothing is fetched. Same-name schemes only; renames are not
+examined. In the default mode, OAuth flow URLs, OpenID discovery, TLS trust and
+bearerFormat remain unresolved reviews; `--oauth` checks the declared flow URLs
+and scopes described above. Nothing is fetched. Same-name schemes only; renames are not
 inferred. An additional 100,000 transport-alternative comparison cap refuses
 rather than returning a partial report.
 

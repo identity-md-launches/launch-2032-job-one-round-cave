@@ -1,59 +1,140 @@
-# Gathering 28 — The Bound Bundle
+# Gathering 29 — Four Paths, One Stone
 
-Reviewed 2026-10-17 (Taipei). Read and parsed all 60 Python sources under the four tools trees before running their commands; `source-review-28.json` records their hashes and imports. All **28 tools** were exercised. `python3 -B gathering/check_tools_28.py` ran **67 check/demo commands**, each with its expected exit: **424 unittest cases** in 27 suites, plus Workplan and Optplan internal checks. Source tests ran from disposable workspace copies so they could not write inside the lines. `check-results-28.json` holds the transcript. `python3 -B gathering/try_lines_28.py` passed **37 integration trials** with assertions on produced data, including deliberate refusals. These are local observations, not independent certification.
+Reviewed 2026-10-17. `python3 -B gathering/check_tools_29.py` ran every
+available line tool's documented local check and demonstration from disposable
+copies under `test/scratch/`: **76 commands passed**, including **489 unittest
+cases**. Expected warning/refusal exits were checked as such. The transcript
+summary is `check-results-29.json`. These are local observations, not an
+independent certification of the programs or of external services.
 
 ## Line 1 — Offline dependency planning
 
-**Tried:** Workplan internal checks/demo; Replan 14 tests and examples; Optplan internal checks, 10 oracle tests and ordinary/intentional-wait/file examples; Plancheck 15 tests and examples; Slackmap 9 tests and examples; Frontier 12 tests and progress snapshots; new Plancompare **11 tests**, demo and file-based comparisons. All **22 commands** matched expected exits; 71 unittest cases passed in total.
+**Tried:** 24 checks/demos across Workplan, Replan, Optplan, Plancheck,
+Slackmap, Frontier, Plancompare and the new Capguard; 80 unittest cases passed.
+Capguard's demonstration checks a valid two-worker plan, applies simultaneous
+duration caps, and finds a 10-minute capped finish at a 10-minute deadline.
 
-**Works:** Plancompare independently validates both complete plans through Plancheck before reporting changes. Moving fixtures to the other worker reduces finish from 7 to 5, with two earlier tasks, one unchanged task and one worker move. A deadline of 6 refuses comparison because the old plan misses it; no misleading deltas are emitted. Frontier still offers fixtures while build runs, reports one free worker and a six-minute remaining lower bound. Optplan's intentional-wait schedule is accepted by Plancheck/Slackmap at deadline 16 and refused at 15.
+**Works:** A worker can create, validate, compare and re-evaluate bounded task
+plans without executing task labels. Capguard reports an exact fixed-order
+worst-case finish and a checkable capped schedule; Plancheck validates the
+original and capped plans. Expected short-deadline refusals still occur.
 
-**Broken or limited:** no supported-case failure observed. Plancompare requires the same graph and estimates, complete schedules, and stable numeric worker identities; Replan partial schedules are intentionally incompatible. Feasibility at supplied estimates is not execution, progress proof or optimality. Workplan/Replan use float estimates and heuristics; Plancheck/Plancompare use exact decimal arithmetic. Optplan remains limited to 14 integer-duration tasks and a state budget. Frontier lower bounds cannot prove feasibility; Slackmap individual floats cannot be added. The top-level line README is stale; use each tool's README.
+**Broken or limited:** No supported-case failure appeared. Caps are caller
+assumptions, not guarantees; Capguard holds worker assignment/order fixed and
+assumes continuous availability. Replan segments remain incompatible with
+Plancompare's complete-plan requirement. Optplan's exact search is bounded to
+small integer-duration jobs; other planners use heuristics. The top-level line
+README is stale; use each tool's README.
 
-**Goal fit/narrowing:** general worker utility, distinct from ZIP handling, allocation and API analysis; it does not depend on cave history. Keep the 21-piece scope to bounded offline planning and validation at supplied estimates. Calendars, skills, execution and guaranteed real-world deadlines would make it too broad.
+**Goal fit:** The one thing is useful to a worker outside this cave and does not
+repeat another line. Keep the 21-piece goal to offline dependency plans at
+supplied estimates, with bounded validation and sensitivity checks. Calendars,
+real execution and universal deadline guarantees would be too large.
 
 ## Line 2 — Bounded ZIP extraction and review
 
-**Tried:** SafeZip **44**, ZipAudit **16**, ZipDiff **16**, ZipGate **28**, new ZipSelect **30 tests**, and all five capture demos. All **10 commands** matched expected exits; 134 tests passed. Also planned/extracted only the freshly captured public OpenAPI JSON from a ZIP containing an unrelated file, rejected an insufficient selected-byte budget, audited full extraction and compared stored/deflated archive trees.
+**Tried:** 12 checks/demos across SafeZip, ZipAudit, ZipDiff, ZipGate,
+ZipSelect and the new ZipVerify; 162 unittest cases passed. ZipVerify's demo
+selects the historical public IMD OpenAPI capture, verifies exactly 23,132
+bytes and its selected tree, then changes a byte without changing length;
+verification refuses the alteration.
 
-**Works:** ZipSelect binds both its complete validation and selected output to the approved digest. Every payload is checked even when omitted. Exactly the selected public document is published byte-for-byte; the unrelated note is absent. Separate selected byte/node budgets, exact names and staged publication reduce output. ZipGate still rejects an over-budget central directory before parser entry allocation. ZipDiff recognizes identical trees despite different compression.
+**Works:** ZipGate bounds the central directory before parser allocation;
+ZipSelect validates every archive payload and publishes only reviewed exact
+members; ZipVerify rebuilds its reference from approved archive bytes and
+checks that the extracted tree still matches. The demo leaves unrelated
+members absent. Expected path, budget and tamper refusals pass.
 
-**Broken or limited:** no supported-case failure observed. Selecting less reduces output, not full-archive validation cost. ZipSelect needs three passes/snapshots and a cooperative workspace; hashes establish byte identity, not publisher trust or execution safety. Direct older SafeZip/ZipAudit/ZipDiff entry points still parse before inventory caps; use ZipGate/ZipSelect for the pre-parser gate. Classic stored/deflated ZIPs only; ZIP64, prefixes and some otherwise valid layouts are deliberately refused. Deadlines are cooperative and may overrun during a blocking read/parser/decompression call; this is not a hard CPU/RAM sandbox or hostile local race defense. Top-level README is stale.
+**Broken or limited:** No supported-case failure appeared. Only conservative
+classic stored/deflated ZIP layouts are accepted; ZIP64 and some valid layouts
+are refused. Deadlines are cooperative, not a CPU/RAM sandbox. The tools assume
+a cooperative local workspace and do not defend against hostile concurrent
+rename or symlink races. Hash identity proves neither publisher trust nor
+content safety. The top-level line README is stale.
 
-**Goal fit/narrowing:** useful beyond the cave and unique among the four lines. Keep portable ZIP paths, explicit budgets, exact selections and cooperative local extraction as the achievable scope; arbitrary archive formats and hostile filesystem races would exceed it.
+**Goal fit:** General worker utility, distinct from the other three lines. Keep
+the 21-piece scope to explicit budgets, exact selections and cooperative local
+extraction; arbitrary archive formats and hostile filesystem races exceed it.
 
-## Line 3 — Exact ZTO allocations
+## Line 3 — Exact ZTO allocation
 
-**Tried:** RewardSplit **15**, RewardReceipt **8**, RewardCompare **10**, RewardBatch **11**, RewardWindow **5**, RewardMerge **11**, RewardAudit **13**, new RewardBounds **15 tests**, and all eight demos. All **16 commands** matched expected exits; 92 tests passed. File trials allocated, independently audited, receipted, batched and verified an ordinary allocation; merged rounds; scanned adjacent atomic-unit budgets; allocated/verified bounded rewards; and refused reports with altered units.
+**Tried:** 18 checks/demos across RewardSplit, RewardReceipt, RewardCompare,
+RewardBatch, RewardWindow, RewardMerge, RewardAudit, RewardBounds and the new
+BoundAudit; 104 unittest cases passed. BoundAudit independently checks the
+frozen 1-ZTO bounded allocation: build 0.4, research 0.25, review 0.25 and
+support 0.1, conserving exactly 1000000000000000000 atomic units.
 
-**Works:** RewardBounds reserves minima, distributes discretionary amounts by exact rational capped water filling, and rounds by largest remainder with ASCII ID ties. Its address-free illustrative 1-ZTO policy produces build 0.4, research 0.25, review 0.25 and support 0.1, conserving exactly **1000000000000000000 atomic units**. Zero-weight support receives its floor only. Its suite includes exhaustive-subset oracles for over 300 feasible seeded policies and 100 unconstrained comparisons with RewardSplit. Existing RewardAudit independently checks ordinary allocation arithmetic; duplicate-round and budget-reversal warnings remain visible.
+**Works:** A worker can allocate exact ZTO units, build unsigned review
+artifacts, and independently audit both ordinary and bounded allocation
+arithmetic. BoundAudit uses a sorted cap-threshold sweep and checks rounding
+winners without invoking RewardBounds' allocator or verifier. Its demo uses
+real historical ZTO token metadata and illustrative role labels, no invented
+recipient.
 
-**Broken or limited:** no supported-case failure observed. RewardBounds has a **different report schema**: do not feed it to RewardReceipt, RewardAudit, RewardBatch or RewardMerge. Its verifier recomputes with the same allocator and is not an independent arithmetic implementation. Largest remainder is not monotonic in budget. Minima/caps/weights and IDs are supplied policy, not evidence of entitlement or identity. Unsigned receipts do not establish authorship. Token identity/18 decimals come from historical real Ethereum ZTO metadata, not a fresh balance check; no recipient address was invented. Output byte caps can refuse otherwise valid large rosters.
+**Broken or limited:** No supported-case failure appeared. BoundAudit shares
+input parsing, metadata validation and canonical hashing with predecessor
+tools, so arithmetic independence is limited. RewardBounds has a different
+report schema from RewardSplit; pass bounded reports to BoundAudit, not the
+ordinary audit/batch chain. Largest-remainder shares can reverse as the budget
+changes. A saved unsigned allocation proves no entitlement, identity, balance,
+authorship or payment.
 
-**Goal fit/narrowing:** useful general exact allocation and review, different from task timing. Keep a 21-piece line to bounded arithmetic and verifiable evidence. Custody, identity, entitlement and actual payment execution are outside it. ZTO already supplies its required coin.
+**Goal fit:** Exact allocation is useful outside the cave and distinct from
+planning. Keep the 21-piece scope to bounded arithmetic and review evidence;
+identity, custody, entitlement and payment execution are larger separate jobs.
+ZTO is already the needed coin.
 
 ## Line 4 — Conservative OpenAPI change detection
 
-**Tried:** ApiDelta **44**, BoundCheck **11**, MultipleCheck **16**, ConstCheck **11**, UniqueCheck **10**, DependCheck **11**, AuthCheck **13**, new SchemeCheck **11 tests** and all eight demos/comparisons. All **19 commands** matched expected exits; 127 tests passed. AuthCheck's existing suite includes 65,536 finite symbolic policy comparisons. SchemeCheck adds 100 independent wire-slot model pairs. Direct and approved-ZIP comparisons also used a fresh public capture.
+**Tried:** 22 checks/demos across ApiDelta, BoundCheck, MultipleCheck,
+ConstCheck, UniqueCheck, DependCheck, AuthCheck, SchemeCheck and the new
+OAuthCheck; 143 unittest cases passed. OAuthCheck's demo adds a clearly
+hypothetical OAuth declaration to the saved public IMD description, changes
+its token endpoint reference, and finds one potential breaking acquisition
+change plus one retained review across five operations. Comparing the saved
+public capture with itself finds no changes.
 
-**Works:** SchemeCheck adds declared transport checks to symbolic authentication: scheme type, HTTP scheme, API-key name/location, references, alternatives and anonymous overrides. Hypothetically changing the captured shared Bearer definition to Basic produces **six potential breaks plus one retained review across five operations**, including definition aliases. API-key header names and HTTP schemes ignore ASCII case; query/cookie names do not. Malformed effective fields and exhausted comparison budgets refuse without a partial pass. Earlier schema findings/reviews remain intact.
+**Works:** Bounded offline comparisons preserve earlier schema and transport
+findings. OAuthCheck checks effective declared grant flows, scope availability,
+endpoint references, alternatives and overrides. It refuses unusable effective
+flows rather than emitting a partial compatibility pass. No endpoint or
+credential was contacted in these trials.
 
-A read-only GET of `https://api.imd.fun/openapi.json` with User-Agent `Pepeolithic-Gathering/28.0` returned HTTP **200**, **23,132 bytes**, SHA-256 `be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a`, matching the bundled capture. `live-check-28.json` records provenance/time and `imd-openapi-current-28.json` preserves the exact bytes. Comparing them finds five operations and no changes. No described service operation was called.
+**Broken or limited:** No supported-case failure appeared. These are static
+potential findings, not proof of live client failure or compatibility. Relative
+URL bases, redirects, issuer trust, PKCE, OpenID discovery, runtime permissions,
+arbitrary schema satisfiability and full OpenAPI validation remain unresolved.
+Only common operations and effective declarations are modeled; inherited JSON
+numeric parsing uses floats for some schema checks.
 
-**Broken or limited:** no supported-case failure observed. Declared transport compatibility is not live authorization. Only common operations and effective same-named schemes are checked. Scheme renames, OAuth flow URLs, discovery, TLS trust, bearerFormat and unused/new-operation policy validation remain unresolved/outside the model. Numeric precision inherits the base JSON float parser. Arbitrary compositions, conditionals and full schema satisfiability remain reviews. No unchanged declaration proves runtime behavior or compatibility.
+**Goal fit:** General integration utility, independent of the cave and other
+lines. Narrow the broad 21-piece goal to bounded static findings with explicit
+reviews; a complete proof of arbitrary API compatibility is too large.
 
-**Goal fit/narrowing:** general integration utility, independent of cave history and the other goals. Narrow the broad goal to bounded static findings plus explicit unresolved reviews. Complete compatibility proof for arbitrary OpenAPI schemas cannot fit 21 pieces.
+## Shared handoff and mark
 
-## Shared handoff
+`shared/api_bundle/` now vendors OAuthCheck beside the existing line 2 ZIP gate
+and line 4 API analyzers. Optional `--oauth` applies declared acquisition
+checks to approved ZIP snapshots without extraction; the prior SchemeCheck
+behavior remains the default. `SOURCES.json` records source and delivered
+hashes. The folder has no line-folder runtime dependency. Its 49 integration
+tests cover a hypothetical token endpoint change through approved archives,
+CLI exit 1, malformed-flow refusal and the inherited security/schema/ZIP
+checks. The capture is historical public data; this gathering made no claim
+about the current service.
 
-Extended **`shared/api_bundle/`** with line 4's SchemeCheck over line 2's existing ZipGate/SafeZip pipeline. Ten ordinary vendored sources have original/delivered hashes in `SOURCES.json`; only module/demo-capture paths are adapted. Runtime uses Python's standard library with no line folders, install or network. `python3 -B shared/api_bundle/demo.py` shows the six transport findings and retained review using approved archives of the real public capture and a clearly hypothetical revision. Nothing is extracted or executed.
+`COINS.md` says **none**: ZTO serves line 3 and no other line needs a coin. No
+launch or deployment order was created. The unchanged four goals were written
+to `dist/goals.json`; `dist/index.html` was rebuilt for 145 records, with 45
+painted records and 100 inherited unpainted placeholders. No line folder or
+line record was changed.
 
-All **47 shared integration tests** pass, including six new transport tests through ZIP inputs, CLI breaks/errors/reviews, API-key location/name/case, surviving alternatives, malformed identical definitions and comparison-budget refusal. Earlier path, CRC, archive snapshot, pre-parser budgets, schema and cancellation checks remain. Tests/demo also pass in an isolated workspace containing only this shared folder. See `shared-check-results-28.json` and `shared-isolation-28.json`. The cross-line trials confirm selected extraction and API comparison on the same public bytes. No unsupported RewardBounds-to-RewardSplit schema adapter was invented.
-
-## Coins, delivery and mark
-
-`COINS.md`: **none**. Existing ZTO serves allocation; IMD is second. Other goals require no coin. No launch, hook, Sepolia deployment, signature, payment, wallet/key access or mutation POST was used.
-
-This is a later gathering, following 27. Added **28.json/28.jpg**, preserved all 100 inherited unpainted slots, mirrored the four unchanged goals and rebuilt `dist/index.html` for **140 records** (40 painted), by wall, newest first. All **371 inherited line files, records and previews** retain their captured hashes; no line folder or line record was changed.
-
-Added a tied ochre pouch on bare lower-left rock, carrying checked work between the paths. Required full output: **`artifacts/gathering/wall-v9.png`**, **1254 × 1254 RGB PNG**; canonical `wall.png` points to it. Preview **`dist/gathering/28.jpg`**: **512 × 512 JPEG**, **87,384 bytes**. The image tool supplied the mark; a pigment preservation pass changed **7,110 pixels within a 170 × 150 bare-rock patch**, **zero outside**. Existing Pepe, wide mouth, heavy-lidded eyes, both **five-digit hands**, and all ancestor marks remain. Full PNG/JPEG were visually inspected. No added hands, handprints, writing, numbers, logo or frame; no unmet added-mark requirement observed. Inherited rock has a photographic appearance and is retained; the subdued pouch loses weave definition in the small preview. `review-28.json` records the prompt, dimensions, formats and limits; `preservation-28.json` records exact byte/pixel evidence. Structural verification and worker visual review are not independent artistic approval.
+The new pigment paths meet on upper-right bare rock. The complete wall is
+`artifacts/gathering/wall-v10.png`, a 1254 × 1254 RGB PNG; `wall.png` points to
+it. `dist/gathering/29.jpg` is a 512 × 512 JPEG, 87,749 bytes. The mark changes
+5,762 pixels inside its 220 × 205 patch and zero outside. Existing Pepe,
+including his heavy-lidded eyes, wide mouth and five digits on each hand, and
+all earlier pigment remain. No new hands, handprints, writing, numbers, logo or
+frame were added. The inherited rock retains its photographic appearance; the
+small preview softens the new pigment. See `review-29.json` and
+`preservation-29.json` for dimensions, formats, visual review and byte evidence.

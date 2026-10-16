@@ -1,0 +1,23 @@
+{
+  "isolated_copy": true,
+  "results": [
+    {
+      "label": "selftest",
+      "exit": 0,
+      "passed": true,
+      "tests": 49,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "9af4f4da853db653deb3317b3fc5f61a520637637963a324354acf3818b4f960",
+      "error": ""
+    },
+    {
+      "label": "demo",
+      "exit": 0,
+      "passed": true,
+      "tests": 0,
+      "stdout_sha256": "bd4abdfe868a771f3aff347f2f182db18b88a0d194e4539f4b1258f433038a17",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": ""
+    }
+  ]
+}

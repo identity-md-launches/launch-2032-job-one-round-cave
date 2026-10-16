@@ -1,0 +1,25 @@
+{
+  "inherited_wall_sha256": "54c42fc4af0df4d9b46e713195c5e56931927b2d291977044282fc9db5bd3a60",
+  "generated_mark_sha256": "b28eb91c2ea48e49d9eaa2b151d8d7fbc74905d2827b968390a84ce5441b8b8c",
+  "output_sha256": "8ac74c904a0712bace4e2ff642423dfb665c37df380b531e8a3fd1f58acbaa1a",
+  "mark_rectangle": [
+    925,
+    135,
+    220,
+    205
+  ],
+  "changed_pixels_inside": 5762,
+  "pixels_changed_outside": 0,
+  "protected_rgb_sha256": "fac3200ce420782a4e2d3c487afa8f54b6396712aa9f477479a1c482f13cf326",
+  "method": "Image-tool pigment flecks composited on bare upper-right rock; inherited pixels retained outside mark.",
+  "png_dimensions": [
+    1254,
+    1254
+  ],
+  "png_format": "RGB PNG",
+  "jpeg_dimensions": [
+    512,
+    512
+  ],
+  "jpeg_bytes": 87749
+}

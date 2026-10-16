@@ -58,5 +58,11 @@
     "source_sha256": "60d13c0a3d341f39df26de9094f551decf85f412beb515ef81e5bec614fcbc5a",
     "sha256": "1a8e5fdac2f31f1c6b4308dcd666326ad698b206dd6ded2526b9526d5469ecc7",
     "adaptation": "Sibling AuthCheck import and demo capture paths adjusted for standalone shared layout only; analysis unchanged."
+  },
+  "vendor/oauthcheck.py": {
+    "source": "line-4/tools/oauthcheck/oauthcheck.py",
+    "source_sha256": "8e7814cdda548e2aeea4f328f70bf66251862be304d61fb2d7fe37706f8102e1",
+    "sha256": "d32e6860edbd1f82ace8d5faaaca349d9bdcaeba6cca9f4d4fb4a5c9899c2343",
+    "adaptation": "Sibling SchemeCheck import and demo capture path adjusted for standalone shared layout only; analysis unchanged."
   }
 }

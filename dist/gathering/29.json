@@ -1,0 +1,30 @@
+{
+  "name": "Four Paths, One Stone",
+  "image": "https://api.imd.fun/artifacts/8ac74c904a0712bace4e2ff642423dfb665c37df380b531e8a3fd1f58acbaa1a",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Gathering"
+    },
+    {
+      "trait_type": "Number",
+      "value": 29
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "OAuth-aware API Bundle"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Four pigment paths meet at one stone as checked work moves between workers."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Gathering"
+    }
+  ]
+}

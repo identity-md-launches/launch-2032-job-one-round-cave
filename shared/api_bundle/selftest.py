@@ -16,6 +16,43 @@ import api_bundle as bundle
 
 class BundleTests(unittest.TestCase):
 
+    def test_oauth_flow_change_through_approved_zip_snapshots(self):
+        old = json.loads(Path(__file__).with_name('imd-openapi.json').read_bytes())
+        old['components']['securitySchemes']['illustrativeOAuth'] = {
+            'type': 'oauth2', 'flows': {'authorizationCode': {
+                'authorizationUrl': 'https://example.invalid/authorize',
+                'tokenUrl': 'https://example.invalid/token',
+                'scopes': {'read': 'Read'}}}}
+        old['paths']['/requests/quote']['post']['security'] = [{'illustrativeOAuth': ['read']}]
+        new = copy.deepcopy(old)
+        new['components']['securitySchemes']['illustrativeOAuth']['flows']['authorizationCode']['tokenUrl'] += '-v2'
+        a, b = self.archive('oauth-old.zip', old), self.archive('oauth-new.zip', new)
+        before = {p.name: p.read_bytes() for p in self.root.iterdir()}
+        report = bundle.compare(a, b, oauth=True,
+                                old_sha256=hashlib.sha256(a.read_bytes()).hexdigest(),
+                                new_sha256=hashlib.sha256(b.read_bytes()).hexdigest())
+        self.assertIn('oauth_acquisition_incompatible', [f['code'] for f in report['findings']])
+        self.assertEqual(report['status'], 'breaking')
+        self.assertTrue(report['bundle_inputs']['old']['approved_sha256_checked'])
+        self.assertEqual(before, {p.name: p.read_bytes() for p in self.root.iterdir()})
+        self.assertNotIn('oauth_acquisition_incompatible',
+                         [f['code'] for f in bundle.compare(a, b)['findings']])
+        cli = subprocess.run([sys.executable, '-B', bundle.__file__, str(a), str(b),
+                              '--old-sha256', hashlib.sha256(a.read_bytes()).hexdigest(),
+                              '--new-sha256', hashlib.sha256(b.read_bytes()).hexdigest(),
+                              '--oauth'], capture_output=True, text=True, timeout=10)
+        self.assertEqual(cli.returncode, 1, cli.stdout + cli.stderr)
+        self.assertIn('oauth_acquisition_incompatible',
+                      [f['code'] for f in json.loads(cli.stdout)['findings']])
+
+    def test_oauth_mode_rejects_unusable_effective_flow(self):
+        old = json.loads(Path(__file__).with_name('imd-openapi.json').read_bytes())
+        old['components']['securitySchemes']['illustrativeOAuth'] = {'type': 'oauth2', 'flows': {}}
+        old['paths']['/requests/quote']['post']['security'] = [{'illustrativeOAuth': ['read']}]
+        a = self.archive('invalid-oauth.zip', old)
+        with self.assertRaisesRegex(ValueError, 'no flow declaring all its scopes'):
+            bundle.compare(a, a, oauth=True)
+
     def transport_doc(self, scheme):
         doc = copy.deepcopy(self.doc)
         doc['components'] = {'securitySchemes': {'wire': scheme}}
