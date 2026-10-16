@@ -1,0 +1,34 @@
+{
+  "source": "artifacts/line-3/wall-v9.png",
+  "source_sha256": "93d6a3a5a41eec8ccc73d02b54750083218b04f9dbe5edc4729d8d5932e88dac",
+  "generated_sha256": "4bf2c587ffe40f594ddabf8032dc0fa2a3ae1857732feb60962459a12f98ba9f",
+  "output": "artifacts/line-3/wall-v10.png",
+  "output_sha256": "cf31ce389bd0bcdadef74582c4dcde69740e23e92ee8eb519c7eaeeaf6e59aaa",
+  "patch_xywh": [
+    610,
+    930,
+    220,
+    165
+  ],
+  "generated_crop_xywh": [
+    80,
+    190,
+    1100,
+    820
+  ],
+  "changed_pixels": 6408,
+  "changed_pixels_outside_patch": 0,
+  "png_dimensions": [
+    1254,
+    1254
+  ],
+  "png_format": "RGB PNG",
+  "png_bytes": 2432231,
+  "jpeg_dimensions": [
+    512,
+    512
+  ],
+  "jpeg_format": "JPEG",
+  "jpeg_bytes": 54173,
+  "method": "Threshold-selected generated charcoal, red ochre and bowl ochre blended only onto bare lower rock."
+}

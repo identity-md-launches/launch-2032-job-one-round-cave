@@ -1,0 +1,42 @@
+{
+  "step": 29,
+  "tool": "BoundAudit",
+  "wall": "artifacts/line-3/wall-v10.png",
+  "canonical_wall": "artifacts/line-3/wall.png",
+  "preview": "dist/line-3/29.jpg",
+  "dimensions": {
+    "wall": [
+      1254,
+      1254
+    ],
+    "preview": [
+      512,
+      512
+    ]
+  },
+  "formats": {
+    "wall": "RGB PNG",
+    "preview": "JPEG"
+  },
+  "image_generation": "installed mcp image generator; imagegen skill; isolated pigment composited onto preserved ancestral wall",
+  "prompt": "Prehistoric burnt-stick charcoal balance, two shallow ochre bowls each holding two red pebbles, equal shares, tan rock, no hands, people, text, numerals, logos or frames.",
+  "visual_review": {
+    "reviewer": "implementing worker",
+    "full_png_inspected": true,
+    "preview_inspected": true,
+    "ancestral_pepe_preserved": true,
+    "wide_mouth_and_heavy_lidded_eyes": true,
+    "visible_ancestral_hand_digits": 5,
+    "new_hands_or_handprints": 0,
+    "new_letters_numbers_logos_frames_observed": false,
+    "unmet_added_mark_requirements": [],
+    "limitations": [
+      "Inherited rock has a photographic texture and was preserved unchanged.",
+      "Small balance pigment becomes subdued in the JPEG preview.",
+      "Visual review is by the implementing worker, not independent artistic approval."
+    ]
+  },
+  "preservation_evidence": "line-3/asset-build/preservation-29.json",
+  "goal_unchanged": true,
+  "network": "image tool only; no fresh chain metadata request"
+}

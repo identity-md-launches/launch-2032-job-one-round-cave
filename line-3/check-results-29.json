@@ -1,0 +1,64 @@
+{
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "line-3/tools/boundaudit/selftest.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_addresses_are_propagated_and_bound (__main__.AuditTests.test_addresses_are_propagated_and_bound) ... ok\ntest_all_caps_and_duplicate_thresholds (__main__.AuditTests.test_all_caps_and_duplicate_thresholds) ... ok\ntest_cli_success_errors_and_overwrite_refusal (__main__.AuditTests.test_cli_success_errors_and_overwrite_refusal) ... ok\ntest_demo_without_allocator_or_verifier (__main__.AuditTests.test_demo_without_allocator_or_verifier) ... ok\ntest_every_header_and_row_field_tampering (__main__.AuditTests.test_every_header_and_row_field_tampering) ... ok\ntest_invalid_requests_metadata_and_json (__main__.AuditTests.test_invalid_requests_metadata_and_json) ... ok\ntest_large_compact_report (__main__.AuditTests.test_large_compact_report) ... ok\ntest_minima_only_zero_weight_and_zero_capacity (__main__.AuditTests.test_minima_only_zero_weight_and_zero_capacity) ... ok\ntest_multiple_caps_exact_levels_and_ties (__main__.AuditTests.test_multiple_caps_exact_levels_and_ties) ... ok\ntest_non_tied_wrong_winner (__main__.AuditTests.test_non_tied_wrong_winner) ... ok\ntest_seeded_feasible_policies_and_exhaustive_awards (__main__.AuditTests.test_seeded_feasible_policies_and_exhaustive_awards) ... ok\ntest_uint256_fractional_weights_and_permutation (__main__.AuditTests.test_uint256_fractional_weights_and_permutation) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.464s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "line-3/tools/boundaudit/boundaudit.py",
+        "demo"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"schema\": \"boundaudit-v1\",\n  \"result\": \"passed independent bounded-allocation arithmetic audit\",\n  \"budget_units\": \"1000000000000000000\",\n  \"contributors\": 4,\n  \"waterfill_level_fraction\": \"150000000000000000\",\n  \"rounding_units_distributed\": 0,\n  \"checks\": [\n    \"sorted cap-threshold integration\",\n    \"exact rational quotas and floors\",\n    \"rounding winner/loser boundary and ASCII ties\",\n    \"bounds and budget conservation\",\n    \"complete report fields and JSON types\"\n  ],\n  \"request_sha256\": \"8e0fd4c5fd8b46491263f6e845c20d51eeb048fceb34fd85a16e081c4178bd80\",\n  \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n  \"report_sha256\": \"6bbf3187a8756a55f0b12b6388ee32fbeb53f543eeb8270a2eb08d0e5126e3b7\",\n  \"scope\": \"arithmetic only; shared input validation; historical metadata; no entitlement, identity, balance or payment proof\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "line-3/tools/boundaudit/boundaudit.py",
+        "audit",
+        "--request",
+        "line-3/tools/boundaudit/request.json",
+        "--report",
+        "line-3/tools/boundaudit/report.json"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"schema\": \"boundaudit-v1\",\n  \"result\": \"passed independent bounded-allocation arithmetic audit\",\n  \"budget_units\": \"1000000000000000000\",\n  \"contributors\": 4,\n  \"waterfill_level_fraction\": \"150000000000000000\",\n  \"rounding_units_distributed\": 0,\n  \"checks\": [\n    \"sorted cap-threshold integration\",\n    \"exact rational quotas and floors\",\n    \"rounding winner/loser boundary and ASCII ties\",\n    \"bounds and budget conservation\",\n    \"complete report fields and JSON types\"\n  ],\n  \"request_sha256\": \"8e0fd4c5fd8b46491263f6e845c20d51eeb048fceb34fd85a16e081c4178bd80\",\n  \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n  \"report_sha256\": \"6bbf3187a8756a55f0b12b6388ee32fbeb53f543eeb8270a2eb08d0e5126e3b7\",\n  \"scope\": \"arithmetic only; shared input validation; historical metadata; no entitlement, identity, balance or payment proof\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "inherited RewardBounds tests excluding scratch-file CLI test",
+      "tests": 14,
+      "output": "test_budget_equals_positive_capacity (bounds_tests.BoundsTests.test_budget_equals_positive_capacity) ... ok\ntest_demo_real_zto (bounds_tests.BoundsTests.test_demo_real_zto) ... ok\ntest_exact_minima_and_zero_capacity (bounds_tests.BoundsTests.test_exact_minima_and_zero_capacity) ... ok\ntest_infeasible_minima_caps_and_zero_weight (bounds_tests.BoundsTests.test_infeasible_minima_caps_and_zero_weight) ... ok\ntest_large_report_compacts_and_verifies (bounds_tests.BoundsTests.test_large_report_compacts_and_verifies) ... ok\ntest_malformed_input_and_addresses (bounds_tests.BoundsTests.test_malformed_input_and_addresses) ... ok\ntest_metadata_and_output_bounds (bounds_tests.BoundsTests.test_metadata_and_output_bounds) ... ok\ntest_multiple_caps_and_rounding_tie (bounds_tests.BoundsTests.test_multiple_caps_and_rounding_tie) ... ok\ntest_no_bounds_matches_original_allocator (bounds_tests.BoundsTests.test_no_bounds_matches_original_allocator) ... ok\ntest_outside_workspace_refused_before_read (bounds_tests.BoundsTests.test_outside_workspace_refused_before_read) ... ok\ntest_permutation_is_byte_identical (bounds_tests.BoundsTests.test_permutation_is_byte_identical) ... ok\ntest_seeded_exhaustive_oracle (bounds_tests.BoundsTests.test_seeded_exhaustive_oracle) ... ok\ntest_tampering_types_and_request_disagreement (bounds_tests.BoundsTests.test_tampering_types_and_request_disagreement) ... ok\ntest_uint256_and_fractional_weight_precision (bounds_tests.BoundsTests.test_uint256_and_fractional_weight_precision) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.116s\n\nOK\n"
+    }
+  ],
+  "structural_checks": {
+    "wall_dimensions": [
+      1254,
+      1254
+    ],
+    "preview_dimensions": [
+      512,
+      512
+    ],
+    "preview_bytes": 54173,
+    "new_record": 29,
+    "goal_byte_identical": true,
+    "older_records_and_tools_byte_identical": true,
+    "existing_used_log_preserved": true,
+    "wall_hash_matches_record": true,
+    "inherited_wall_hash_matches": true,
+    "paths_within_scope": true
+  },
+  "authority": "Local observations by the implementing worker; not independent certification."
+}

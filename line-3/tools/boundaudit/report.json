@@ -1,0 +1,71 @@
+{
+  "schema": "rewardbounds-allocation-v1",
+  "purpose": "bounded allocation only; no transaction, balance check, or promise of payment",
+  "token": {
+    "chain_id": 1,
+    "address": "0xd782bdea4ef02a0bd391eb9089470c8080f0a68e",
+    "symbol": "ZTO",
+    "decimals": 18,
+    "block_number": 26205319,
+    "block_hash": "0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a"
+  },
+  "budget_units": "1000000000000000000",
+  "budget_amount": "1.000000000000000000",
+  "minimum_units_reserved": "400000000000000000",
+  "discretionary_units": "600000000000000000",
+  "method": "reserve minima; cap-weighted discretionary water filling; largest remainder; ASCII id ties",
+  "waterfill_level_fraction": "150000000000000000",
+  "rounding_units_distributed": 0,
+  "unallocated_units": "0",
+  "all_recipients_supplied": false,
+  "allocations": [
+    {
+      "id": "build",
+      "weight_fraction": "8",
+      "minimum_units": "100000000000000000",
+      "maximum_units": "400000000000000000",
+      "discretionary_quota_fraction": "300000000000000000",
+      "rounding_unit_awarded": false,
+      "units": "400000000000000000",
+      "amount": "0.400000000000000000",
+      "at_minimum": false,
+      "at_maximum": true
+    },
+    {
+      "id": "research",
+      "weight_fraction": "1",
+      "minimum_units": "100000000000000000",
+      "maximum_units": "1000000000000000000",
+      "discretionary_quota_fraction": "150000000000000000",
+      "rounding_unit_awarded": false,
+      "units": "250000000000000000",
+      "amount": "0.250000000000000000",
+      "at_minimum": false,
+      "at_maximum": false
+    },
+    {
+      "id": "review",
+      "weight_fraction": "1",
+      "minimum_units": "100000000000000000",
+      "maximum_units": "1000000000000000000",
+      "discretionary_quota_fraction": "150000000000000000",
+      "rounding_unit_awarded": false,
+      "units": "250000000000000000",
+      "amount": "0.250000000000000000",
+      "at_minimum": false,
+      "at_maximum": false
+    },
+    {
+      "id": "support",
+      "weight_fraction": "0",
+      "minimum_units": "100000000000000000",
+      "maximum_units": "500000000000000000",
+      "discretionary_quota_fraction": "0",
+      "rounding_unit_awarded": false,
+      "units": "100000000000000000",
+      "amount": "0.100000000000000000",
+      "at_minimum": true,
+      "at_maximum": false
+    }
+  ]
+}

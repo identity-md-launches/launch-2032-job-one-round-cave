@@ -1,0 +1,30 @@
+{
+  "name": "The Second Balance",
+  "image": "https://api.imd.fun/artifacts/cf31ce389bd0bcdadef74582c4dcde69740e23e92ee8eb519c7eaeeaf6e59aaa",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 3"
+    },
+    {
+      "trait_type": "Number",
+      "value": 29
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "BoundAudit"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Pepe checks the promised shares on a second balance before anyone carries them away."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Exact ZTO reward allocation"
+    }
+  ]
+}

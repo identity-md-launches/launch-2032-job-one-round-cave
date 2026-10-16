@@ -1,0 +1,27 @@
+{
+  "budget": "1",
+  "contributors": [
+    {
+      "id": "build",
+      "weight": "8",
+      "minimum": "0.1",
+      "maximum": "0.4"
+    },
+    {
+      "id": "research",
+      "weight": "1",
+      "minimum": "0.1"
+    },
+    {
+      "id": "review",
+      "weight": "1",
+      "minimum": "0.1"
+    },
+    {
+      "id": "support",
+      "weight": "0",
+      "minimum": "0.1",
+      "maximum": "0.5"
+    }
+  ]
+}
