@@ -1,0 +1,29 @@
+{
+  "wall": "artifacts/line-4/wall-v10.png",
+  "format": "PNG",
+  "dimensions": [1254, 1254],
+  "preview": "dist/line-4/29.jpg",
+  "preview_format": "JPEG",
+  "preview_dimensions": [512, 512],
+  "method": "Built-in imagegen additive edit followed by narrow silhouette assembly using the existing inspected local Node PNG/JPEG codec.",
+  "prompt": "Preserve the exact square cave rock, cracks, light, framing, all ancestral marks, Pepe and both five-digit hands. Add only a small worn yellow ochre pair of interlocking oval rings on bare upper-right stone, handmade charcoal outlines with rock texture. No writing, numbers, logos, borders, additional hands or figures.",
+  "visual_review": {
+    "full_png_inspected": true,
+    "preview_inspected": true,
+    "pepe_wide_mouth_and_heavy_lidded_eyes_preserved": true,
+    "hands": {"count": 2, "digits_each": [5, 5], "new_hands": 0},
+    "prior_marks_preserved": true,
+    "no_writing_observed": true,
+    "unmet_visual_requirements": []
+  },
+  "limitations": [
+    "Inherited photographic-looking rock preserved as required.",
+    "Worn links lose fine pigment texture in the 512px preview.",
+    "Worker visual review, not independent human approval."
+  ],
+  "preservation": {
+    "changed_pixels": 9190,
+    "changed_pixels_outside_addition": 0,
+    "bounds_inclusive": [975, 396, 1116, 493]
+  }
+}

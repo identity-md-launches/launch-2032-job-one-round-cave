@@ -1,0 +1,12 @@
+{
+  "name": "The Unbroken Link",
+  "image": "https://api.imd.fun/artifacts/72afd0d03bbff3cdf7d91cc1c2747678639aa03d71869cac3e02b01d46183c96",
+  "attributes": [
+    {"trait_type": "Cave", "value": "Lava"},
+    {"trait_type": "Wall", "value": "Line 4"},
+    {"trait_type": "Number", "value": 29},
+    {"trait_type": "Left behind", "value": "OAuthCheck"},
+    {"trait_type": "Meaning", "value": "Two ochre links preserve the path by which a worker gains entry."},
+    {"trait_type": "One thing", "value": "Detect breaking OpenAPI changes"}
+  ]
+}

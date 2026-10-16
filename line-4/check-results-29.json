@@ -1,0 +1,86 @@
+{
+  "tests": [
+    {
+      "command": "python3 -B line-4/tools/oauthcheck/selftest.py",
+      "exit": 0,
+      "tests_passed": 16,
+      "finite_oracle_pairs": 36
+    },
+    {
+      "command": "python3 -B line-4/tools/schemecheck/selftest.py",
+      "exit": 0,
+      "tests_passed": 11
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "line-4/tools/oauthcheck/oauthcheck.py",
+        "demo"
+      ],
+      "exit": 0,
+      "report": {
+        "schema": "apidelta-report-v1",
+        "perspective": "existing clients upgrading to the new description",
+        "status": "breaking",
+        "counts": {
+          "breaking": 1,
+          "review": 1,
+          "info": 0
+        },
+        "operations_compared": 5,
+        "findings": [
+          {
+            "severity": "review",
+            "code": "document_metadata_changed",
+            "location": "/",
+            "message": "Document metadata, components or extensions changed; review anything not covered by specific findings."
+          },
+          {
+            "severity": "breaking",
+            "code": "oauth_acquisition_incompatible",
+            "location": "/paths/~1requests~1quote/post/security",
+            "message": "Old effective alternative 0 has no transport-compatible new alternative retaining every old OAuth flow that offered its required scopes, with identical declared endpoint URLs and those scopes. Existing acquisition or refresh integrations may fail; no endpoint or credential was tested."
+          }
+        ],
+        "limits": "Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.",
+        "extension": "oauthcheck-v1 (includes schemecheck and earlier line 4 analyzers)",
+        "oauth_alternative_comparisons": 9,
+        "capture_sha256": "be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a",
+        "baseline_source": "https://api.imd.fun/openapi.json",
+        "demo": "Hypothetical OAuth token URL migration added to the bundled public description; no endpoint called."
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "line-4/tools/oauthcheck/oauthcheck.py",
+        "compare",
+        "line-4/tools/apidelta/imd-openapi.json",
+        "line-4/tools/apidelta/imd-openapi.json"
+      ],
+      "exit": 0,
+      "report": {
+        "schema": "apidelta-report-v1",
+        "perspective": "existing clients upgrading to the new description",
+        "status": "no_detected_breakage",
+        "counts": {
+          "breaking": 0,
+          "review": 0,
+          "info": 0
+        },
+        "operations_compared": 5,
+        "findings": [],
+        "limits": "Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.",
+        "extension": "oauthcheck-v1 (includes schemecheck and earlier line 4 analyzers)",
+        "oauth_alternative_comparisons": 11,
+        "old_sha256": "be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a",
+        "new_sha256": "be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a"
+      }
+    }
+  ],
+  "limitations": "Local observations only; offline capture and hypothetical revision, no live API behavior claimed."
+}

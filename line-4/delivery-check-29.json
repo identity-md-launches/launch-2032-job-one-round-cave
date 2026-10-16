@@ -1,0 +1,17 @@
+{
+  "record_count": 29,
+  "new_record": "dist/line-4/29.json",
+  "older_records_unchanged": true,
+  "goal_unchanged": true,
+  "wall_png_dimensions": [
+    1254,
+    1254
+  ],
+  "wall_sha256": "72afd0d03bbff3cdf7d91cc1c2747678639aa03d71869cac3e02b01d46183c96",
+  "canonical_wall_matches": true,
+  "preview_bytes": 87070,
+  "record_hash_matches": true,
+  "tracked_changes_within_scope": true,
+  "non_artifact_file_size_limit_passed": true,
+  "test_cases_passed": 27
+}
