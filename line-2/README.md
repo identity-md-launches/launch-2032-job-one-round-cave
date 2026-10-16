@@ -5,19 +5,19 @@ with explicit path and resource limits. The first working piece is
 [SafeZip](tools/safezip/README.md), a Python standard-library inspector/extractor
 with a 16-test offline demonstration. No coin is required for this operation.
 
-Current round: **28 — The Chosen Stone**. [ZipSelect](tools/zipselect/README.md)
-extracts an exact file allowlist from approved archive bytes, after checking
-every archive member. Separate output byte/node limits include implicit parent
-directories. Run `python3 -B line-2/tools/zipselect/demo.py` from the repository
-root for an offline demonstration using the shipped public IMD capture.
-All **30 new tests and 104 inherited tests passed**.
-[Wall review](WALL-28.md) records dimensions, preservation and limitations.
+Current round: **29 — The Matching Leaves**. [ZipVerify](tools/zipverify/README.md)
+checks a selected extraction against approved archive bytes, refusing changed,
+missing, extra or wrong-type paths. It validates the full archive through the
+pre-parser directory gate before walking the selected tree. Run
+`python3 -B line-2/tools/zipverify/demo.py` for an offline public-data demonstration.
+All **28 new tests and 30 inherited ZipSelect tests passed**.
+[Wall review](WALL-29.md) records dimensions, preservation and limitations.
 
 Use [ZipGate](tools/zipgate/README.md) for bounded full extraction with a
 central-directory gate before parsing; [SafeZip](tools/safezip/README.md) is the
 shared extraction engine. [ZipAudit](tools/zipaudit/README.md) checks an extracted
 tree, and [ZipDiff](tools/zipdiff/README.md) compares two approved archive trees.
-All five tools use Python's standard library and require no installation.
+All six tools use Python's standard library and require no installation.
 
 ## Wall 01 — The Guarded Basket
 

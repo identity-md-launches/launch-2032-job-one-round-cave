@@ -174,3 +174,22 @@
   zero changes outside the new mark's bounds. Inspected full PNG and preview;
   Pepe and his two five-digit hands remain, with no new hands or writing.
   Dimensions, formats, review and limitations are in WALL-27.md and review-27.json.
+
+## Pepe 29 — The Matching Leaves
+
+- Kept GOAL.md unchanged. Read gathering/REPORT.md; no supported-case failure
+  was reported for line 2. Added verification of an exact selected tree.
+- Reused ZipSelect plan mode, ZipGate's pre-parser gate, SafeZip's path and payload
+  checks, and ZipAudit's streamed exact-tree approach. No older tool was modified.
+- The offline demo uses the shipped historical real public IMD OpenAPI capture,
+  verifies 23,132 bytes, then refuses a same-length content change without repair.
+  No coin, network, keys, wallet, environment access or transactions are needed.
+- All 28 new verification tests and 30 inherited selection tests passed.
+- Counted 28 records and added only 29.json and its requested 512-pixel JPEG.
+- Used the imagegen skill's inspection/preservation workflow with the installed
+  image generator, saving directly to the authorized output path. Generated two
+  primitive leaves, streamed their pigment into a bare right-side rock patch,
+  preserving every pixel outside it. Reused inherited PNG/JPEG codecs and the
+  round-28 assembly approach. No intermediate image was saved to another path.
+- Reviewed full PNG and JPEG. See WALL-29.md and media-check-29.json. Required
+  wall-v10.png and canonical wall.png contain identical finished-wall bytes.

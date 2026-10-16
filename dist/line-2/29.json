@@ -1,0 +1,30 @@
+{
+  "name": "The Matching Leaves",
+  "image": "https://api.imd.fun/artifacts/f63bf369c367d90c424787a60a1bf0b13f8de0c93c36efd657f190cb56440764",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 2"
+    },
+    {
+      "trait_type": "Number",
+      "value": 29
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "ZipVerify"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Two matching leaves compare what was carried with what was chosen."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Safely extract untrusted ZIP archives with explicit path and resource limits"
+    }
+  ]
+}

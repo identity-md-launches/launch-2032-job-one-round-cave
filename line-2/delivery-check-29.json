@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "goal_byte_identical": true,
+  "old_records_and_previews_unchanged": true,
+  "new_record_number": 29,
+  "new_record_schema_valid": true,
+  "wall_sha256_matches_record": true,
+  "png_dimensions": [
+    1254,
+    1254
+  ],
+  "png_format": "RGB PNG",
+  "jpeg_dimensions": [
+    512,
+    512
+  ],
+  "jpeg_bytes": 89265,
+  "required_wall_untracked": true,
+  "source_syntax_valid": true,
+  "changed_tracked_paths_in_scope": true,
+  "unmet_added_mark_visual_requirements": []
+}
