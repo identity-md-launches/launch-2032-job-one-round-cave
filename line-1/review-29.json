@@ -1,0 +1,44 @@
+{
+  "number": 29,
+  "tool": "Capguard",
+  "checks": {
+    "observed": "9 tests passed; 24 four-task duration combinations enumerated",
+    "demo": "baseline 9; simultaneous capped finish 10; deadline 10; margin 0",
+    "predecessor": "Plancheck validates the original and capped schedules"
+  },
+  "wall": {
+    "source": "artifacts/line-1/wall.png before this round",
+    "required_output": "artifacts/line-1/wall-v10.png",
+    "continuing_output": "artifacts/line-1/wall.png",
+    "sha256": "aafa216af1def4d9750ca433170cf353ffa9c32e4154e101892c6bef1ec8f4d5",
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 2869549,
+    "preview": "dist/line-1/29.jpg",
+    "preview_format": "JPEG",
+    "preview_width": 512,
+    "preview_height": 512,
+    "preview_bytes": 81674,
+    "changed_pixels": 25426,
+    "outside_addition_mask_changed_pixels": 0
+  },
+  "visual_review": {
+    "inspected": [
+      "artifacts/line-1/wall-v10.png",
+      "dist/line-1/29.jpg"
+    ],
+    "added": "A red ochre beetle carrying two pebbles on bare lower-left stone beside the earlier leaves.",
+    "preserved": "Pepe, the earlier creatures, leaves, paths, sun, hand stencil, cave framing, rock and cracks outside the small addition mask.",
+    "digits": "Both inherited Pepe hands and the inherited stencil visibly have five digits; the beetle adds no hands or stencil.",
+    "text_or_marks": "No visible letters, numbers, caption, signature, logo or border.",
+    "unmet_visual_requirements": [
+      "The inherited cave rock has a photographic appearance; preserving its required surface and framing retains that appearance."
+    ]
+  },
+  "limitations": [
+    "The image was generated from the inherited wall and composited only within a 171 by 151 pixel area. Fine beetle detail softens in the 512-pixel JPEG.",
+    "The explicit record-adjacent JPEG requirement places one image under dist/line-1 despite the general image-location rule."
+  ],
+  "review_status": "Local visual and byte inspection only; no independent artistic certification."
+}

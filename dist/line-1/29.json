@@ -1,0 +1,30 @@
+{
+  "name": "The Beetle's Burden",
+  "image": "https://api.imd.fun/artifacts/aafa216af1def4d9750ca433170cf353ffa9c32e4154e101892c6bef1ec8f4d5",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 1"
+    },
+    {
+      "trait_type": "Number",
+      "value": 29
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Capguard"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "A beetle carries the heaviest plausible work along a known path."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Offline dependency work planning"
+    }
+  ]
+}

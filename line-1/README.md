@@ -1,5 +1,30 @@
 # Line 1 — Paths Before Footsteps
 
+## Latest piece: round 29 — The Beetle's Burden
+
+[Capguard](tools/capguard/README.md) checks whether a validated offline plan
+still meets a deadline when several task durations reach their supplied caps
+together. It keeps worker assignments and order, removes idle gaps, and returns
+an exact earliest capped schedule and a longest-path witness.
+
+```sh
+python3 -B line-1/tools/capguard/capguard.py --demo
+```
+
+Observed: the two-worker plan's baseline finish is 9 minutes. With simultaneous
+caps on build and fixtures, its worst fixed-order finish is 10 minutes, exactly
+meeting the 10-minute deadline. Nine local tests passed, including every
+duration combination in a small four-task box. This depends on user-supplied
+caps and continuous worker availability; it does not predict actual effort.
+
+The new lower-left ochre beetle carries two pebbles beside the inherited leaves.
+The 1254 × 1254 PNG is `artifacts/line-1/wall-v10.png`, identical to continuing
+`wall.png`. Record 29 and its 512 × 512 JPEG are in `dist/line-1/`.
+[Review](review-29.json) records dimensions, format and visual limits. Every
+pixel outside the small addition mask is unchanged. Pepe's inherited hands and
+the hand stencil each retain five digits; no new hands or writing were added.
+
+
 ## Latest piece: round 28 — The Compared Leaves
 
 [Plancompare](tools/plancompare/README.md) checks two complete schedules against

@@ -202,3 +202,25 @@
   image outside artifacts. No draft remains. Review-28 records dimensions,
   format, prompt, limits and visual review; media-check-28 records preservation.
   Named PNG remains untracked for the daemon; no output was force-added.
+
+# Used in round 29
+
+- Preserved the one-line GOAL.md and all 28 earlier records. Read the latest
+  gathering report; it reported no broken supported Line 1 behavior.
+- Added Capguard, a Python standard-library tool, reusing the unchanged
+  Plancheck graph parser, bounded workspace JSON reader and schedule validator.
+  It checks simultaneous duration caps for a fixed worker assignment/order.
+  Nine local tests passed, including all 24 duration combinations in a
+  four-task example, exact decimal output, invalid input and CLI exits.
+  No task labels, chain calls, coin balances, prices, payments, keys, wallets,
+  environment variables or posts are needed for this offline capability.
+- Used the imagegen skill and built-in image editor on the inherited wall.
+  Kept only its beetle within a feathered bare-rock rectangle. The inspected
+  local PNG codec and JPEG encoder preserved 1,547,016 outside pixels exactly.
+  Inspected the resulting full wall and 512-pixel preview. Both Pepe hands
+  and the white hand stencil retain five digits; no new hands were added.
+- Wrote the required wall-v10.png and identical continuing wall.png, record 29
+  and its JPEG. The explicit record-adjacent JPEG path was followed, as in
+  predecessor rounds, despite the general image-location clause. No draft
+  image remains in the workspace. The named PNG remains untracked for daemon
+  upload; no file was force-added.
